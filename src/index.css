@@ -1,13 +1,36 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+
+@font-face {
+  font-family: "Shapiro Middle Extd";
+  src: local("Shapiro Middle Extd"), url(./fonts/Shapiro\ 55\ Middle\ Extd.otf);
+}
+@font-face {
+  font-family: "Shapiro Middle Wide";
+  src: local("Shapiro Middle Wode"), url(./fonts/Shapiro\ 55\ Middle\ Wide.otf);
+}
+@font-face {
+  font-family: "Shapiro Super Wide";
+  src: local("Shapiro Super Wide"), url(./fonts/Shapiro\ 95\ Super\ Wide.otf);
+}
+@font-face {
+  font-family: "Shapiro Light Heavy";
+  src: local("Shapiro Light Heavy"),
+    url(./fonts/Shapiro\ 65\ Light\ Heavy\ Text.otf);
+}
+@font-face {
+  font-family: "Shapiro Feather Text";
+  src: local("Shapiro Feather Text"),
+    url(./fonts/Shapiro\ 35\ Feather\ Text.otf);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  background-color: white;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
 }
