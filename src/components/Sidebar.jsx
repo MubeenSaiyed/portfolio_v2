@@ -1,5 +1,4 @@
-import anime from "animejs";
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -21,23 +20,16 @@ function Sidebar() {
     dispatch(handleSidebarState());
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      // anime({
-      //   targets: ".link-item",
-      //   translateX: [200, 0],
-      //   duration: 400,
-      //   delay: 400,
-      //   easing: "cubicBezier(.5, .05, .1, .3)",
-      // });
-    }
-  }, [isOpen]);
   return (
     <Container
       style={{ transitionDelay: isOpen ? "0s" : "0.4s" }}
-      className={`flex h-screen ${isOpen ? "w-col-11" : "w-0"}  bg-navColor`}
+      className={`flex h-screen 
+        w-col-10 md:w-col-11
+        bg-navColor
+        ${isOpen ? "scale-x-100" : "scale-x-0"}
+        `}
     >
-      <ContentWrapper id="Sidebar" className="">
+      <ContentWrapper id="Sidebar">
         <Projects className=" min-w-fit">
           {projectsLinks.map((project, i) => (
             <div
@@ -50,7 +42,7 @@ function Sidebar() {
                 onClick={() => closeSidebar()}
                 className=" link-item flex items-center"
               >
-                <span className="font-shapiroMiddleExtd md:text-72px sm:text-28px lg:text-92px leading-45px">
+                <span className="font-shapiroMiddleExtd text-28px md:text-72px  lg:text-92px leading-20px md:leading-45px">
                   {project.title}
                 </span>
               </Link>
@@ -58,7 +50,7 @@ function Sidebar() {
           ))}
         </Projects>
         <Image
-          className={` w-col-7 top-19%  lg:top-0 md:w-col-4   ${
+          className={` w-col-7 bottom-0  lg:top-0 md:w-col-4   ${
             isOpen ? "enter" : "leave"
           }`}
         >
@@ -74,7 +66,8 @@ const Container = styled.section`
   /* min-width: calc(100% - 8%); */
   max-width: 100%;
   z-index: 1000;
-  transition: width 0.4s ease-in-out;
+  transform-origin: left;
+  transition: transform 0.4s ease-in-out;
 `;
 
 const ContentWrapper = styled.div`

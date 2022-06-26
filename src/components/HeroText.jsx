@@ -1,7 +1,9 @@
 import anime from "animejs";
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function HeroText({ text, i }) {
+  const { pathname } = useLocation();
   const randomNum = [
     "1",
     "2",
@@ -45,7 +47,7 @@ function HeroText({ text, i }) {
   useEffect(() => {
     animateTextOnLoad(`#heroText-${i}`, i);
     animateTextOnLoad(`#attitude-${i}`, i, true);
-  }, []);
+  }, [pathname]);
 
   return (
     <>

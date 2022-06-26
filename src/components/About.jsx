@@ -12,7 +12,7 @@ function About({ offsetY }) {
   const heroImg = useRef();
   const intro_section = useRef();
   const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
-  const feedImage = useSelector((state) => state.feed.projects);
+  const activeProject = useSelector((state) => state.feed.activeProject);
   const [current, setCurrent] = useState(1);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -42,20 +42,11 @@ function About({ offsetY }) {
         className="intro w-col-2 transition-all  relative flex flex-col justify-end"
       >
         <h1 className=" font-shapiroMiddleWide text-center">
-          MOBIN <br /> SAIYAD
+          {activeProject[0].title}
         </h1>
         <div className="mt-10 ">
           <div className=" font-shapiroFeatherText text-13px ">
-            <span className="font-semibold">Aim</span> to be associated with a
-            progressive organization that gives scope to update my knowledge and
-            skills and be a part of a team that dynamically work to word the
-            growth of the organization and help in attaining a cutting edge over
-            its competitors.
-          </div>
-
-          <div className="font-shapiroFeatherText text-13px mt-5">
-            I as a <span className="font-bold">developer</span> works to achive
-            perfection and delivers excellent work to the client.
+            {activeProject[0].description}
           </div>
         </div>
       </div>
@@ -63,7 +54,7 @@ function About({ offsetY }) {
       <HeroWrapper className="hero-wrap w-col-7 -translate-y-col-2">
         <div className="inner-hero flex">
           {/* <img ref={heroImg} className="" src={heroImage} alt="" /> */}
-          <IMG src={handleHero(pathname, feedImage).image} ref={heroImg} />
+          <IMG src={activeProject[0].src} ref={heroImg} />
         </div>
       </HeroWrapper>
     </Container>

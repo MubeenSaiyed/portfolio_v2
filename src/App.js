@@ -11,7 +11,7 @@ import Hero from "./components/Hero";
 import ProjectFeed from "./components/ProjectFeed";
 import Sidebar from "./components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentProject } from "./features/feed/feedSlice";
+import { setActiveProject } from "./features/feed/feedSlice";
 import chevdown from "./images/icon_chev_down.png";
 import MobileAbout from "./components/MobileAbout";
 
@@ -24,26 +24,25 @@ function App() {
   const dispatch = useDispatch();
   const isChevDown = useSelector((state) => state.sidebar.isChevDown);
   useEffect(() => {
-    dispatch(setCurrentProject(pathname));
+    dispatch(setActiveProject(pathname));
     setLoading(false);
     // for the hero wrapper rellax effect
+
+    // end of useeffect
+  }, [pathname, isLoading, dispatch]);
+
+  useEffect(() => {
+    const onScroll = () => setOffsetY(window.pageYOffset);
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     new Rellax(hero_wrapper.current, {
-      speed: -1.3,
+      speed: -1.2,
       center: false,
       wrapper: null,
       round: true,
       vertical: true,
       horizontal: false,
     });
-    // end of useeffect
-  }, [pathname, isLoading, dispatch]);
-
-  useEffect(() => {
-    // when app loads navigate to shareme app
-    // navigate("/shareme");
-    const onScroll = () => setOffsetY(window.pageYOffset);
-    window.removeEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [isLoading]);
 
@@ -72,6 +71,14 @@ function App() {
           )}
         />
         <Route
+          path="/project/shareme"
+          element={feed.projects?.netflix.map((item, i) =>
+            i === 0 ? null : (
+              <ProjectFeed key={i} title={item.title} imageSrc={item.src} />
+            )
+          )}
+        />
+        <Route
           path="/project/disneyplus"
           element={feed.projects?.disney.map((item, i) =>
             i === 0 ? null : (
@@ -90,7 +97,7 @@ function App() {
 
         <Route
           path="/"
-          element={feed.projects?.shareme.map((item, i) =>
+          element={feed.projects?.netflix.map((item, i) =>
             i === 0 ? null : (
               <ProjectFeed key={i} title={item.title} imageSrc={item.src} />
             )

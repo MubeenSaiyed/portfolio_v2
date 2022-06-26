@@ -2,25 +2,24 @@ export const handleHero = (location, feed) => {
   let project = {};
   switch (location) {
     case "/project/instagram":
-      project.id = feed?.instagram[0].id;
-      project.image = feed?.instagram[0].src;
+      project = feed?.instagram;
       break;
     case "/project/spotify":
-      project.id = feed?.spotify[0].id;
-      project.image = feed?.spotify[0].src;
+      project = feed?.spotify;
+
       break;
     case "/project/netflix":
-      project.id = feed?.netflix[0].id;
-      project.image = feed?.netflix[0].src;
+      project = feed?.netflix;
+
       break;
 
     case "/project/disneyplus":
-      project.id = feed?.disney[0].id;
-      project.image = feed?.disney[0].src;
+      project = feed?.disney;
+
       break;
     default:
-      project.id = feed?.shareme[0].id;
-      project.image = feed?.shareme[0].src;
+      project = feed?.shareme;
+
       break;
   }
 

@@ -1,31 +1,82 @@
 import React, { useEffect, useState } from "react";
 import { useInViewEffect } from "react-hook-inview";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { increment } from "../features/counter/counterSlice";
+import {
+  change,
+  nextProject,
+  previousProject,
+} from "../features/feed/feedSlice";
+import { handleHero } from "../utils/currentPage";
 
 function Footer({ offsetY }) {
   const [isVisible, setVisible] = useState(false);
-
   const documentHeight = document.documentElement.scrollHeight;
+  const { pathname } = useLocation();
+  const feed = useSelector((state) => state.feed.projects);
+  const [activeProject, setActiveProject] = useState([]);
+  const dispatch = useDispatch();
+  const path = useSelector((state) => state.feed.path);
+  const navigate = useNavigate();
+  const navigateNext = () => {
+    dispatch(nextProject());
+    dispatch(change());
+  };
+  const navigatePre = () => {
+    dispatch(previousProject());
+    dispatch(change());
+  };
+
   useEffect(() => {
-    if (offsetY > documentHeight - 800) {
+    if (offsetY > documentHeight - 1000) {
       setVisible(true);
     } else {
       setVisible(false);
     }
   }, [isVisible, offsetY, documentHeight]);
 
+  useEffect(() => {
+    setActiveProject(handleHero(pathname, feed));
+  }, [feed, activeProject, pathname]);
+
+  useEffect(() => {
+    navigate(String(path));
+  }, [path]);
   return (
     <Container className="" style={{ bottom: isVisible ? "0px" : "-75px" }}>
-      <div id="footerMain" className="flex w-full justify-between">
+      <div id="footerMain" className="hidden md:flex w-full justify-between">
         <div className="footer-start w-col-4">
           <h1 className=" uppercase font-shapiroSuperWide">Mobin / mubeen</h1>
         </div>
         <div className="footer-center flex justify-around w-col-4">
-          <a href="#" className=" font-shapiroMiddleWide">
+          <a
+            onClick={(e) => {
+              // dispatch(increment());
+              // console.log(value);
+              e.preventDefault();
+              window.scrollTo({ top: 200, behavior: "smooth" });
+              navigatePre();
+            }}
+            href="#"
+            className=" font-shapiroMiddleWide"
+          >
             Previous
           </a>
           <span></span>
-          <a href="#" className=" font-shapiroMiddleWide">
+          <a
+            onClick={(e) => {
+              // dispatch(increment());
+              // console.log(value);
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+
+              navigateNext();
+            }}
+            href="#"
+            className=" font-shapiroMiddleWide"
+          >
             Next
           </a>
         </div>
@@ -35,6 +86,20 @@ function Footer({ offsetY }) {
             <br />
             All Rights Reserved. Copyright 2022 ©
           </div>
+        </div>
+      </div>
+
+      <div
+        id="footerMobile"
+        className="flex md:hidden w-full justify-center items-center"
+      >
+        <div className="footer-center flex justify-center items-center w-col-4">
+          {/* <a href="#" className=" font-shapiroMiddleWide">
+            Previous
+          </a> */}
+          <Link to={"/"} className=" font-shapiroMiddleWide">
+            Next
+          </Link>
         </div>
       </div>
     </Container>
@@ -54,6 +119,23 @@ const Container = styled.div`
     bottom: -75px;
     height: 100%;
     padding: 29px 4.05% 0 4.05%;
+    color: #a7a7a7;
+    a {
+      color: #a7a7a7;
+      transition: 0.3s ease-in-out all;
+
+      &:hover {
+        color: black;
+      }
+    }
+    .footer-end {
+      color: black;
+    }
+  }
+
+  #footerMobile {
+    bottom: -75px;
+    height: 100%;
     color: #a7a7a7;
     a {
       color: #a7a7a7;

@@ -1,9 +1,9 @@
 import anime from "animejs";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { setCurrentProject } from "../features/feed/feedSlice";
+import { setActiveProject } from "../features/feed/feedSlice";
 import { handleSidebarState } from "../features/sidebar/sidebarSlice";
 import { handleHero } from "../utils/currentPage";
 
@@ -52,8 +52,8 @@ function Header({ offsetY }) {
     applyAnimationOnLoad("#Contact", [-200, 0], 0, 800, 1700);
     applyAnimationOnLoad("#WaterMark", [-200, 0], 0, 800, 1900);
     applyAnimationOnLoad("#brandLogo", [-200, 0], 0, 800, 2100);
-    dispatch(setCurrentProject(pathname));
-    setCurrentPage(handleHero(pathname, feed).id);
+    dispatch(setActiveProject(pathname));
+    setCurrentPage(handleHero(pathname, feed)[0].id);
   }, [pathname]);
 
   return (
@@ -74,7 +74,7 @@ function Header({ offsetY }) {
           <div className="flex">
             <a
               id="Contact"
-              href="#"
+              href="mailto:mobinsaiyed888@gmail.com"
               className={`font-shapiroMiddleExtd font-thin text-13px ${addGrayscale}`}
             >
               CONTACT
@@ -101,14 +101,14 @@ function Header({ offsetY }) {
           </div>
         </div>
         <div className="w-col-2 md:w-col-1">
-          <a
-            href="#"
+          <Link
+            to="/"
             className=" relative top-8 rotate-90 block text-center font-shapiroSuperWide  text-18px "
           >
             <span className="text-1xl block " id="brandLogo">
               MOBIN
             </span>
-          </a>
+          </Link>
 
           <div className="menu-trigger relative w-full top-32 h-16 ">
             <div

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isOpen: false,
   isChevDown: false,
+  notice: true,
 };
 
 const sidebarSlice = createSlice({
@@ -13,12 +14,16 @@ const sidebarSlice = createSlice({
       state.isOpen = !state.isOpen;
     },
     handleChevDown(state) {
-      state.isChevDown = !state.isChevDown;
+      state.isChevDown = true;
+    },
+    handleNotice(state) {
+      state.notice = false;
     },
   },
 });
 
-export const { handleSidebarState, handleChevDown } = sidebarSlice.actions;
+export const { handleSidebarState, handleChevDown, handleNotice } =
+  sidebarSlice.actions;
 
 // export const isSidebarOpen = (state) => state.sidebar.isOpen;
 

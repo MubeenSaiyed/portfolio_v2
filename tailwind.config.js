@@ -63,6 +63,7 @@ module.exports = {
         "col-7": "58.33%",
         "col-8": "67.33%",
         "col-9": "75.33%",
+        "col-10": "83.66%",
         "col-11": "92%",
         "col-80em": "80em",
         "38px": "38px",
@@ -100,6 +101,7 @@ module.exports = {
         "12px": "12px",
         hero: "76px",
         // for the screen side
+        "92px": "92px",
         "76px": "76px", // big pc laptop
         "62px": "62px", // tablate
         "36px": "36px", // mobile

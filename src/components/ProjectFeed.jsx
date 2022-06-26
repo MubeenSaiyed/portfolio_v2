@@ -19,13 +19,13 @@ function ProjectFeed({ title, imageSrc }) {
 
   return (
     <Container
-      className=" relative  flex flex-col  md:flex-row md:items-start "
+      className=" relative bottom-44 md:bottom-24 flex flex-col  md:flex-row md:items-start mb-20 md:mb-44 "
       ref={feedRef}
     >
       <div
         className={
           isVisible
-            ? `w-col-9 ml-col-1 md:w-col-2 md:ml-col-1 ${classes_when_visible}`
+            ? `w-col-9 mb-3 md:mb-0 ml-col-1 md:w-col-2 md:ml-col-1 ${classes_when_visible}`
             : "w-col-9 ml-col-1 md:w-col-2 md:ml-col-1 opacity-0 translate-y-20"
         }
       >
@@ -39,7 +39,7 @@ function ProjectFeed({ title, imageSrc }) {
             : "w-col-9 ml-col-1 md:w-col-7 md:ml-col-1 opacity-0 translate-y-20"
         }
       >
-        <img src={imageSrc} alt="" />
+        <img src={imageSrc} alt={title} />
       </div>
     </Container>
   );
@@ -48,8 +48,7 @@ function ProjectFeed({ title, imageSrc }) {
 const Container = styled.div`
   height: auto;
   width: 100vw;
-  bottom: 11rem;
-  margin-bottom: 11rem;
+  /* bottom: 6rem; */
 
   /* for the coming animation */
   .enter-animation {

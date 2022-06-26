@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { handleChevDown } from "../features/sidebar/sidebarSlice";
-import { handleHero } from "../utils/currentPage";
 
 function MobileAbout({ offsetY }) {
-  const { pathname } = useLocation();
   const heroImg = useRef();
   const intro_section = useRef();
   const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
-  const feedImage = useSelector((state) => state.feed.projects);
-  const dispatch = useDispatch();
-  useEffect(() => {}, [offsetY]);
+  const activeProject = useSelector((state) => state.feed.activeProject);
 
   return (
     <Container
@@ -29,31 +22,18 @@ function MobileAbout({ offsetY }) {
         className="intro transition-all w-col-9  relative flex flex-col justify-end ml-col-1"
       >
         <h1 className=" font-shapiroMiddleWide text-center uppercase">
-          Mobile <br /> SAIYAD
+          {activeProject[0].title}
         </h1>
         <div className="mt-10">
           <div className=" font-shapiroFeatherText text-13px ">
-            <span className="font-semibold">Aim</span> to be associated with a
-            progressive organization that gives scope to update my knowledge and
-            skills and be a part of a team that dynamically work to word the
-            growth of the organization and help in attaining a cutting edge over
-            its competitors.
-          </div>
-
-          <div className="font-shapiroFeatherText text-13px mt-5">
-            I as a <span className="font-bold">developer</span> works to achive
-            perfection and delivers excellent work to the client.
+            {activeProject[0].description}
           </div>
         </div>
       </div>
       <div className="w-col-1"></div>
       <HeroWrapper className="hero-wrap w-col-7 -translate-y-col-2 overflow-hidden">
         <div className="inner-hero flex  translate-y-44">
-          <IMG
-            className=" "
-            src={handleHero(pathname, feedImage).image}
-            ref={heroImg}
-          />
+          <IMG className=" " src={activeProject[0].src} ref={heroImg} />
         </div>
       </HeroWrapper>
     </Container>

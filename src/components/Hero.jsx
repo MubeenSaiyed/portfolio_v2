@@ -1,4 +1,3 @@
-import anime from "animejs";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -47,26 +46,6 @@ function Hero() {
     ".",
   ];
 
-  const randomNum = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-    "#",
-    "@",
-    "$",
-    "%",
-    "&",
-    "*",
-    "!",
-  ];
-
   useEffect(() => {
     window.addEventListener("mousemove", (e) => {
       setY(e.pageY);
@@ -78,7 +57,7 @@ function Hero() {
     <Container
       className={`h-screen w-screen flex md:items-start lg:items-center ${
         isSidebarOpen ? "grayscale-1 opacity-25 scale-75" : " opacity-100"
-      }`}
+      } `}
     >
       <TitleScene
         ref={titleScene}
