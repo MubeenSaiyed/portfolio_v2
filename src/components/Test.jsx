@@ -1,5 +1,4 @@
 import React from "react";
-import image from "./../images/hero.jpg";
 function Test() {
   // spotify #56fe6d
   //instagram  #fe56b2

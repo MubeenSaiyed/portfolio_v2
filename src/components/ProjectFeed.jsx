@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useInView, useInViewEffect } from "react-hook-inview";
+import { useInViewEffect } from "react-hook-inview";
 import styled from "styled-components";
 
 const classes_when_visible = "opacity-1 enter-animation";
@@ -12,7 +12,9 @@ function ProjectFeed({ title, imageSrc }) {
       if (entry.isIntersecting) {
         observer.unobserve(entry.target);
       }
-      setVisible(entry.isIntersecting);
+      setTimeout(() => {
+        setVisible(entry.isIntersecting);
+      }, 1000);
     },
     { threshold: 0.5 }
   );

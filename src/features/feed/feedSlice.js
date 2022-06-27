@@ -158,7 +158,7 @@ const initialState = {
     ],
   },
   activeProject: [],
-  count: 0,
+  count: 1,
   path: "",
 };
 
@@ -223,13 +223,11 @@ const feedSlice = createSlice({
 
     previousProject(state) {
       let length = Object.keys(state.projects).length;
-      if (state.count < 1) {
+      if (state.count < 0) {
         state.count = length;
       } else {
         state.count--;
-        // state.count--;
       }
-      // console.log(state.count);
     },
   },
 });

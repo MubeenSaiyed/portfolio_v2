@@ -9,4 +9,8 @@ export const store = configureStore({
     sidebar: sidebarSlice,
     feed: feedSlice,
   },
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware({
+  //     serializableCheck: false,
+  //   }),
 });

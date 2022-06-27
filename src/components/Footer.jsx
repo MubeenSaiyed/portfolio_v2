@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useInViewEffect } from "react-hook-inview";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { increment } from "../features/counter/counterSlice";
 import {
   change,
   nextProject,
@@ -23,10 +21,12 @@ function Footer({ offsetY }) {
   const navigateNext = () => {
     dispatch(nextProject());
     dispatch(change());
+    navigate(String(path));
   };
   const navigatePre = () => {
     dispatch(previousProject());
     dispatch(change());
+    navigate(String(path));
   };
 
   useEffect(() => {
@@ -41,9 +41,6 @@ function Footer({ offsetY }) {
     setActiveProject(handleHero(pathname, feed));
   }, [feed, activeProject, pathname]);
 
-  useEffect(() => {
-    navigate(String(path));
-  }, [path]);
   return (
     <Container className="" style={{ bottom: isVisible ? "0px" : "-75px" }}>
       <div id="footerMain" className="hidden md:flex w-full justify-between">
@@ -53,10 +50,8 @@ function Footer({ offsetY }) {
         <div className="footer-center flex justify-around w-col-4">
           <a
             onClick={(e) => {
-              // dispatch(increment());
-              // console.log(value);
               e.preventDefault();
-              window.scrollTo({ top: 200, behavior: "smooth" });
+              window.scrollTo({ top: 0, behavior: "smooth" });
               navigatePre();
             }}
             href="#"
@@ -67,11 +62,8 @@ function Footer({ offsetY }) {
           <span></span>
           <a
             onClick={(e) => {
-              // dispatch(increment());
-              // console.log(value);
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
-
               navigateNext();
             }}
             href="#"

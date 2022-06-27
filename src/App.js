@@ -18,17 +18,16 @@ import MobileAbout from "./components/MobileAbout";
 function App() {
   const [isLoading, setLoading] = useState(true);
   const hero_wrapper = useRef();
+  const containerRef = useRef();
   const [offsetY, setOffsetY] = useState(0);
   const feed = useSelector((state) => state.feed);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const isChevDown = useSelector((state) => state.sidebar.isChevDown);
+
   useEffect(() => {
     dispatch(setActiveProject(pathname));
     setLoading(false);
-    // for the hero wrapper rellax effect
-
-    // end of useeffect
   }, [pathname, isLoading, dispatch]);
 
   useEffect(() => {
@@ -43,15 +42,16 @@ function App() {
       vertical: true,
       horizontal: false,
     });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, [isLoading]);
 
   return isLoading ? (
     <>
-      <h1>Loading..</h1>
+      <h1>Loding.</h1>
     </>
   ) : (
-    <Container id="scene" className="App rellax">
+    <Container ref={containerRef} id="scene" className="App rellax">
       <DisplayParts />
       <Header offsetY={offsetY} />
       <Sidebar />
@@ -72,7 +72,7 @@ function App() {
         />
         <Route
           path="/project/shareme"
-          element={feed.projects?.netflix.map((item, i) =>
+          element={feed.projects?.shareme.map((item, i) =>
             i === 0 ? null : (
               <ProjectFeed key={i} title={item.title} imageSrc={item.src} />
             )

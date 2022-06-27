@@ -1,7 +1,7 @@
 import anime from "animejs";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { setActiveProject } from "../features/feed/feedSlice";
 import { handleSidebarState } from "../features/sidebar/sidebarSlice";
@@ -93,9 +93,9 @@ function Header({ offsetY }) {
                 2022 / Portfolio:
                 <span className="font-bold">MobinSaiyad &copy;</span>
                 <br />
-                Brand Identity, Digital Art,
+                Web app, Digital Art,
                 <br />
-                Web Design & Development, NFT Minting
+                Web Design & Development
               </span>
             </div>
           </div>

@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { handleChevDown } from "../features/sidebar/sidebarSlice";
-import { handleHero } from "../utils/currentPage";
 
 function About({ offsetY }) {
-  const { pathname } = useLocation();
   const heroImg = useRef();
   const intro_section = useRef();
   const isSidebarOpen = useSelector((state) => state.sidebar.isOpen);
   const activeProject = useSelector((state) => state.feed.activeProject);
-  const [current, setCurrent] = useState(1);
   const dispatch = useDispatch();
   useEffect(() => {
     if (offsetY > 60) {
