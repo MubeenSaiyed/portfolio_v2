@@ -12,9 +12,7 @@ function ProjectFeed({ title, imageSrc }) {
       if (entry.isIntersecting) {
         observer.unobserve(entry.target);
       }
-      setTimeout(() => {
-        setVisible(entry.isIntersecting);
-      }, 1000);
+      setVisible(entry.isIntersecting);
     },
     { threshold: 0.5 }
   );
