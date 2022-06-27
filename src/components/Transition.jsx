@@ -6,6 +6,7 @@ import styled from "styled-components";
 function Transition() {
   const { pathname } = useLocation();
   const transitionRef = useRef();
+  const refH1 = useRef();
 
   useEffect(() => {
     anime({
@@ -16,8 +17,16 @@ function Transition() {
     });
     anime({
       targets: transitionRef.current,
-      scaleX: [1, 0],
+      height: ["100%", 0],
       duration: 1000,
+      delay: 1000,
+      easing: "easeInOutQuad",
+    });
+
+    anime({
+      targets: refH1.current,
+      translateY: [0, 1000],
+      duration: 800,
       delay: 1000,
       easing: "easeInOutQuad",
     });
@@ -26,9 +35,11 @@ function Transition() {
   return (
     <Container
       ref={transitionRef}
-      className=" bg-yellow fixed top-0 left-0 border z-50"
+      className=" fixed top-0 left-0  z-50 grid place-items-center"
     >
-      sdf
+      <h1 ref={refH1} className=" text-4xl text-white">
+        LOADING
+      </h1>
     </Container>
   );
 }
@@ -36,8 +47,9 @@ function Transition() {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  transform-origin: right;
+  transform-origin: bottom;
   z-index: 1000;
+  background-color: black;
 `;
 
 export default Transition;

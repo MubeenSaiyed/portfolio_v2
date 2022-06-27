@@ -22,9 +22,9 @@ const sidebarSlice = createSlice({
   },
 });
 
+export const isSidebarOpen = (state) => state.sidebar.isOpen;
+
 export const { handleSidebarState, handleChevDown, handleNotice } =
   sidebarSlice.actions;
-
-// export const isSidebarOpen = (state) => state.sidebar.isOpen;
 
 export default sidebarSlice.reducer;

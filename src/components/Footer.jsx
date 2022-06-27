@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {
-  change,
-  nextProject,
-  previousProject,
-} from "../features/feed/feedSlice";
+// import {
+//   change,
+//   nextProject,
+//   previousProject,
+// } from "../features/feed/feedSlice";
 import { handleHero } from "../utils/currentPage";
 
 function Footer({ offsetY }) {
@@ -15,19 +15,19 @@ function Footer({ offsetY }) {
   const { pathname } = useLocation();
   const feed = useSelector((state) => state.feed.projects);
   const [activeProject, setActiveProject] = useState([]);
-  const dispatch = useDispatch();
-  const path = useSelector((state) => state.feed.path);
-  const navigate = useNavigate();
-  const navigateNext = () => {
-    dispatch(nextProject());
-    dispatch(change());
-    navigate(String(path));
-  };
-  const navigatePre = () => {
-    dispatch(previousProject());
-    dispatch(change());
-    navigate(String(path));
-  };
+  // const dispatch = useDispatch();
+  // const path = useSelector((state) => state.feed.path);
+  // const navigate = useNavigate();
+  // const navigateNext = () => {
+  //   dispatch(nextProject());
+  //   dispatch(change());
+  //   navigate(String(path));
+  // };
+  // const navigatePre = () => {
+  //   dispatch(previousProject());
+  //   dispatch(change());
+  //   navigate(String(path));
+  // };
 
   useEffect(() => {
     if (offsetY > documentHeight - 1000) {
@@ -48,7 +48,7 @@ function Footer({ offsetY }) {
           <h1 className=" uppercase font-shapiroSuperWide">Mobin / mubeen</h1>
         </div>
         <div className="footer-center flex justify-around w-col-4">
-          <a
+          {/* <a
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -70,7 +70,15 @@ function Footer({ offsetY }) {
             className=" font-shapiroMiddleWide"
           >
             Next
-          </a>
+          </a> */}
+
+          <div>
+            <a href="mailto:mobinsaiyed888@gmail.com">
+              <h1 className=" uppercase font-bold hover:text-blackDarkest cursor-pointer transition-all ease-in ">
+                mobinsaiyed888@gmail.com
+              </h1>
+            </a>
+          </div>
         </div>
         <div className="footer-end w-col-4 flex justify-end">
           <div className=" text-9px font font-shapiroFeatherText font-bold uppercase">

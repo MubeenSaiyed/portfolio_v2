@@ -33,6 +33,7 @@ import seriesDisney from "./../../images/disney/series_disney.jpg";
 // ---------------------
 
 const initialState = {
+  isLoading: true,
   projects: {
     netflix: [
       {
@@ -229,11 +230,19 @@ const feedSlice = createSlice({
         state.count--;
       }
     },
+    setIsLoading(state, status) {
+      state.isLoading = status.payload;
+    },
   },
 });
 
-export const { setActiveProject, nextProject, previousProject, change } =
-  feedSlice.actions;
+export const {
+  setActiveProject,
+  nextProject,
+  previousProject,
+  change,
+  setIsLoading,
+} = feedSlice.actions;
 
 export const selectFeed = (state) => state.feed;
 

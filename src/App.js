@@ -11,12 +11,14 @@ import Hero from "./components/Hero";
 import ProjectFeed from "./components/ProjectFeed";
 import Sidebar from "./components/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveProject } from "./features/feed/feedSlice";
+import { setActiveProject, setIsLoading } from "./features/feed/feedSlice";
 import chevdown from "./images/icon_chev_down.png";
 import MobileAbout from "./components/MobileAbout";
+import Transition from "./components/Transition";
+import anime from "animejs";
 
 function App() {
-  const [isLoading, setLoading] = useState(true);
+  // const [isLoading, setLoading] = useState(true);
   const hero_wrapper = useRef();
   const containerRef = useRef();
   const [offsetY, setOffsetY] = useState(0);
@@ -24,10 +26,9 @@ function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const isChevDown = useSelector((state) => state.sidebar.isChevDown);
-
+  const isLoading = useSelector((state) => state.feed.isLoading);
   useEffect(() => {
     dispatch(setActiveProject(pathname));
-    setLoading(false);
   }, [pathname, isLoading, dispatch]);
 
   useEffect(() => {
@@ -46,9 +47,24 @@ function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isLoading]);
 
+  useEffect(() => {
+    dispatch(setIsLoading(true));
+
+    setTimeout(() => {
+      // setLoading(false);
+      dispatch(setIsLoading(false));
+      anime({
+        targets: containerRef.current,
+        opacity: [0, 1],
+        duration: 500,
+        easing: "easeInOutQuad",
+      });
+    }, [2000]);
+  }, [pathname]);
+
   return isLoading ? (
     <>
-      <h1>Loding.</h1>
+      <Transition />
     </>
   ) : (
     <Container ref={containerRef} id="scene" className="App rellax">

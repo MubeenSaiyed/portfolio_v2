@@ -1,5 +1,5 @@
-function init(newProject) {
-  new SmoothScroll(document, 100, 20, newProject);
+function init() {
+  new SmoothScroll(document, 100, 20);
 }
 
 // quick not for the next step
@@ -7,7 +7,7 @@ function init(newProject) {
 // means set flag to true > pos=0
 //           flag to false > pos
 
-function SmoothScroll(target, speed, smooth, newProject) {
+function SmoothScroll(target, speed, smooth) {
   if (target === document)
     target =
       document.scrollingElement ||
@@ -32,10 +32,10 @@ function SmoothScroll(target, speed, smooth, newProject) {
 
     pos += -delta * speed;
     pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)); // limit scrolling
-    if (newProject) {
-      pos = 0;
-      // update();
-    }
+    // if (newProject) {
+    //   pos = 0;
+    //   // update();
+    // }
     if (!moving) update();
   }
 
