@@ -11,13 +11,13 @@ function Transition() {
   useEffect(() => {
     anime({
       targets: transitionRef.current,
-      width: [0, "100%"],
+      opacity: [0, 1],
       duration: 1000,
       easing: "easeInOutQuad",
     });
     anime({
       targets: transitionRef.current,
-      height: ["100%", 0],
+      opacity: [1, 0],
       duration: 1000,
       delay: 1000,
       easing: "easeInOutQuad",
@@ -25,8 +25,10 @@ function Transition() {
 
     anime({
       targets: refH1.current,
-      translateY: [0, 1000],
-      duration: 800,
+      // translateY: [0, 1000],
+      duration: 1000,
+      letterSpacing: [0, 100],
+
       delay: 1000,
       easing: "easeInOutQuad",
     });

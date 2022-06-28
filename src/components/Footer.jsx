@@ -97,9 +97,11 @@ function Footer({ offsetY }) {
           {/* <a href="#" className=" font-shapiroMiddleWide">
             Previous
           </a> */}
-          <Link to={"/"} className=" font-shapiroMiddleWide">
-            Next
-          </Link>
+          <a href="mailto:mobinsaiyed888@gmail.com">
+            <h1 className=" uppercase font-bold hover:text-blackDarkest cursor-pointer transition-all ease-in ">
+              mobinsaiyed888@gmail.com
+            </h1>
+          </a>
         </div>
       </div>
     </Container>
