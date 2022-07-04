@@ -42,7 +42,7 @@ const initialState = {
         src: heroNetflix,
         path: "/project/instagram",
         description:
-          "Netflix Clone app. Created with reactJs and MovieDb api to access the show data. When click on any show you can watch trailer.",
+          "Netflix Clone app. Created with reactJs and MovieDb api to access the data. When click on any show you can watch trailer.",
       },
       {
         title: "Home page",
@@ -64,7 +64,7 @@ const initialState = {
         src: heroSpotify,
         path: "/project/spotify",
         description:
-          "Spotify clone. Frontend as reactJs backend as Spotify api. where user can authenticate with spotify api.And access data like playlist, user information, etc.",
+          "Spotify clone.ReactJs as frontend and Spotify api for backend. where user can authenticate with spotify api.And access data like playlist, user information, etc.",
       },
       {
         title: "Login",
@@ -82,7 +82,7 @@ const initialState = {
         src: heroShareme,
         path: "/project/shareme",
         description:
-          "Shareme App. In this app user can login with google account.After login user can upload the post. Or can download the other user post.User can comment on post.User has it's own profile where user can see the posts he/she uploaded.There are many category to see specific posts.This app created with reactJs as frontend and sanity IO as frontend",
+          "Shareme App. In this app user can login with google account.After login user can upload the post. Or can download the other user post.User can comment on post.User has it's own profile where user can see the posts he/she uploaded.There are many category to see specific posts.This app created with reactJs as frontend and sanity IO as backend",
       },
       {
         title: "Login with google",
@@ -110,7 +110,7 @@ const initialState = {
         src: heroInsta,
         path: "/project/instagram",
         description:
-          "Instagram clone app.Forntend as reactJs and firebase as backend.User can login with google. After login user can access this app.It has many functionality. Like uploading post.Adding comment in real time.Can save post. User can Add story or delete uploded story. User can visit profile.Can Edit profile data.All the action are in real time without reloading the page.User can follow or unfollow the user.User can discover new posts in discover section.And much more.",
+          "Instagram clone app.Reactjs as frontend and for the backend i have used Firebase firestore.User can login with google. After login user can access this app.It has many functionality. Like uploading post.Adding comment in real time.Can save post. User can Add story or delete uploded story. User can visit profile.Can Edit profile data.All the action are in real time without reloading the page.User can follow or unfollow the user.User can discover new posts in discover section.And much more.",
       },
       {
         title: "Login",
@@ -138,7 +138,7 @@ const initialState = {
         src: heroDisney,
         path: "/project/disneyplus",
         description:
-          "Disney clone app.Forntend as reactJs and firebase as backend.User can login through google auth.User can check show info.just simple UI design.",
+          "Disney clone app. ReactJs as frontend and firebase as backend.User can login through google auth.User can check show information and just UI for learning purpose design.",
       },
       {
         title: "Login page",
